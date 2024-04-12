@@ -52,12 +52,9 @@ fn main() {
     for transaction in transactions {
         let amount = transaction[0].parse::<i32>().unwrap();
 
-        let mut account = person_accounts.clone();
-
         let transfer_index = person_accounts.iter().position(|acc| acc.owner == transaction[1]).unwrap();
         let receive_index = person_accounts.iter().position(|acc| acc.owner == transaction[2]).unwrap();
-
-        // Realiza la transacción
+        
         person_accounts[transfer_index].amount -= amount;
         person_accounts[receive_index].amount += amount;
     }
